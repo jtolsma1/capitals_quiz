@@ -55,7 +55,9 @@ def check_answer_value(answer_request: AnswerRequest):
     """
     Downloads the dictionary of countries and capitals for use in the quiz. 
     Checks the user's quiz answer against the answer key.
+    If a country has multiple capitals, any correct answer counts.
     If correct, deletes the question from the user's data so it isn't asked again.
+    
     @param answer_request: request body containing user id, question, and answer
     @return True if answer is correct and False if answer is incorrect
     """
@@ -66,8 +68,8 @@ def check_answer_value(answer_request: AnswerRequest):
     question_value = answer_request.question_value
     answer_value = answer_request.answer_value.strip().title()
 
-    correct_answer = country_dict[question_value]
-    if answer_value == correct_answer:
+    correct_answers = country_dict[question_value]
+    if answer_value in correct_answers:
         del country_dict[question_value]
         with open(user_path,"w") as f_user:
             json.dump(country_dict,f_user)
