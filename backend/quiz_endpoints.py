@@ -28,7 +28,7 @@ def get_country_dict_for_user(user_id):
         with open(user_path, "r") as f_user:
             country_dict = json.load(f_user)
     else:
-        with open("/data/country_dict_complete.json","r") as f_complete:
+        with open("/data/country-by-capital-city.json","r") as f_complete:
             country_dict = json.load(f_complete)
 
     return user_path,country_dict
