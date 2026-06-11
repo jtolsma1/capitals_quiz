@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: capitals-quiz
-          image: motetshurdle6p/capitals-quiz-fastapi:10
+          image: motetshurdle6p/capitals-quiz-fastapi:11
           ports:
             - containerPort: 8000
           volumeMounts:
