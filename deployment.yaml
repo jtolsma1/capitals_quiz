@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: capitals-quiz
-          image: motetshurdle6p/capitals-quiz-fastapi:9
+          image: motetshurdle6p/capitals-quiz-fastapi:10
           ports:
             - containerPort: 8000
           volumeMounts:
@@ -25,4 +25,4 @@ spec:
       volumes:
         - name: quiz-data
           hostPath: 
-            path: /json-data
+            path: /user-data
