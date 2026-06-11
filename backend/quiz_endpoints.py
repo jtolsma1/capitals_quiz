@@ -13,7 +13,7 @@ class AnswerRequest(BaseModel):
     answer_value: str
 
 class UserResetRequest(BaseModel):
-    user_id: str
+    user_path:str
 
 app = FastAPI()
 
@@ -85,11 +85,10 @@ def check_answer_value(answer_request: AnswerRequest):
 def reset_user_history(user_reset_request: UserResetRequest):
     """
     Resets the user's quiz data so that all countries are eligible to be asked.
-    @param user_reset_request: request body containing the user id
+    @param user_reset_request: request body containing the user's data path
     @return True if the user had quiz data that was deleted; False if the user had no data
     """
-    user_id = user_reset_request.user_id.strip()
-    user_path = os.path.join("/data","user" + str(user_id)+"_country_dict.json")
+    user_path = user_reset_request.user_path.strip()
     if os.path.exists(user_path):
         os.remove(user_path)
         return True
