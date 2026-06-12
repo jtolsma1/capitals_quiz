@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capitals-quiz-backend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      sector: quiz-backend
+      app: capitals
+  template: 
+    metadata:
+      labels:
+        sector: quiz-backend
+        app: capitals
+    spec:
+      containers:
+        - name: capitals-quiz-backend
+          image: motetshurdle6p/capitals-quiz-fastapi:12
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - mountPath: /data
+              name: quiz-data
+      volumes:
+        - name: quiz-data
+          hostPath: 
+            path: /user-data
