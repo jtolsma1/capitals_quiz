@@ -77,9 +77,9 @@ def check_answer_value(answer_request: AnswerRequest):
         country_list = [entry for entry in country_list if entry["country"] != question_value]
         with open(user_path,"w") as f_user:
             json.dump(country_list,f_user)
-        return True
+        return {"user_path":user_path,"correct":True}
     else:
-        return False
+        return {"user_path":user_path,"correct":False}
 
 @app.post("/user_reset")
 def reset_user_history(user_reset_request: UserResetRequest):
