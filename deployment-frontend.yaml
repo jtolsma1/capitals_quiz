@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capitals-quiz-frontend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      sector: quiz-frontend
+      app: capitals
+  template:
+    metadata:
+      labels:
+        sector: quiz-frontend
+        app: capitals
+    spec:
+      containers:
+        - name: capitals-quiz-frontend
+          image: motetshurdle6p/capitals-quiz-streamlit:2
+          ports:
+            - containerPort: 8501
