@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: capitals-quiz-frontend-service
+spec:
+  selector:
+    sector: quiz-frontend
+    app: capitals
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8501
