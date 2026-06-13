@@ -16,13 +16,13 @@ spec:
     spec:
       containers:
         - name: capitals-quiz-backend
-          image: motetshurdle6p/capitals-quiz-fastapi:12
+          image: motetshurdle6p/capitals-quiz-fastapi:13
           ports:
             - containerPort: 8000
           volumeMounts:
-            - mountPath: /data
+            - mountPath: /user-data
               name: quiz-data
       volumes:
         - name: quiz-data
-          hostPath: 
-            path: /user-data
+          persistentVolumeClaim:
+            claimName: quiz-data-cl
