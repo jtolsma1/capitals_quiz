@@ -25,7 +25,7 @@ def get_country_list_for_user(user_id):
     @return user_path: path designated to save user quiz data
     @return country_dict: user-specific dictionary used for the quiz
     """
-    user_path = os.path.join("/data","user" + str(user_id) + "_country_list.json")
+    user_path = os.path.join("/user-data","user" + str(user_id) + "_country_list.json")
 
     if os.path.exists(user_path):
         with open(user_path, "r") as f_user:
